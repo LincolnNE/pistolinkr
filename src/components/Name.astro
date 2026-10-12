@@ -1,0 +1,27 @@
+---
+import NameMark from './NameMark.astro';
+import Colon from './Colon.astro';
+import { name } from '../data/content';
+---
+<section id="name" class="band">
+  <div class="in stack">
+    <div class="head">
+      <p class="eb">{name.eyebrow}</p>
+      <h2 class="h2">{name.title}</h2>
+    </div>
+    {name.halves.map((h) => (
+      <div class="split">
+        <NameMark lit={h.lit} />
+        <div class="col">
+          <p class="kicker">{h.kicker}</p>
+          <p class="body">{h.body}</p>
+          <ul class="li">
+            {h.items.map((it) => (
+              <li><Colon /><span><b>{it.term}</b>{it.note && <span class="soft"> · {it.note}</span>}</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

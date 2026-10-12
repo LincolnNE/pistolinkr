@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Statement from '../components/Statement.astro';
+import Name from '../components/Name.astro';
+import Lens from '../components/Lens.astro';
+import Work from '../components/Work.astro';
+import Log from '../components/Log.astro';
+import Contact from '../components/Contact.astro';
+import { routes } from '../data/colorways';
+
+export function getStaticPaths() {
+  return Object.entries(routes).map(([path, colorway]) => ({
+    params: { colorway: path || undefined },
+    props: { colorway },
+  }));
+}
+
+const { colorway } = Astro.props;
+---
+<Base colorway={colorway}>
+  <Header />
+  <main>
+    <Hero />
+    <Statement />
+    <Name />
+    <Lens />
+    <Work />
+    <Log />
+  </main>
+  <Contact />
+</Base>

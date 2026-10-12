@@ -1,0 +1,25 @@
+---
+import Colon from './Colon.astro';
+import Short from './Short.astro';
+import { contact, footer } from '../data/content';
+---
+<section id="contact" class="band contact">
+  <div class="in center">
+    <p class="eb">{contact.eyebrow}</p>
+    <h2 class="h2">{contact.title}</h2>
+    <p class="note note--wide">{contact.body}</p>
+    <div class="contact-links">
+      <a class="cta" href={`mailto:${contact.email}`}><Colon />{contact.email}</a>
+      {contact.links.map((l) => <a class="ul link" href={l.href} target="_blank" rel="noopener">{l.label}</a>)}
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="in foot-row">
+      <span>© {new Date().getFullYear()} pistolinkr</span>
+      <div class="foot-links">
+        {footer.links.map((l) => <a class="ul" href={l.href} {...(l.href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>)}
+      </div>
+    </div>
+    <div class="in foot-mark" aria-hidden="true"><Short /></div>
+  </footer>
+</section>

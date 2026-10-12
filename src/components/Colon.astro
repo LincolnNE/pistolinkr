@@ -1,0 +1,10 @@
+---
+// The dot-and-square that stands in for the i. Filled = done, hollow = next.
+import { COLON, COLON_VIEWBOX } from '../data/marks';
+interface Props { hollow?: boolean; class?: string }
+const { hollow = false, class: cls } = Astro.props;
+---
+<svg class:list={['colon', cls]} viewBox={COLON_VIEWBOX} aria-hidden="true"
+  fill={hollow ? 'none' : 'currentColor'} stroke={hollow ? 'currentColor' : undefined} stroke-width={hollow ? '.9' : undefined}>
+  <path d={COLON} />
+</svg>

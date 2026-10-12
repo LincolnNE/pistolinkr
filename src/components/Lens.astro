@@ -1,0 +1,24 @@
+---
+import Colon from './Colon.astro';
+import { lens } from '../data/content';
+---
+<section class="band">
+  <div class="in split split--top">
+    <div class="col">
+      <p class="eb">{lens.eyebrow}</p>
+      <h2 class="h2">{lens.title}</h2>
+      <p class="body">{lens.body}</p>
+      <ul class="li">
+        {lens.items.map((t) => <li><Colon /><span>{t}</span></li>)}
+      </ul>
+    </div>
+    <div class="lens-rows">
+      {lens.rows.map((r) => (
+        <div class="lens-row">
+          <span class="kicker">{r.kicker}</span>
+          <span class:list={['lens-name', { 'is-dim': !r.lit }]}>{r.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
