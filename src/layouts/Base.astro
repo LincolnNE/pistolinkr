@@ -16,7 +16,9 @@ const description = 'pistolinkr — Pistol, a symbol of grace and revolution, an
     <meta name="theme-color" content={colorways[colorway].bg} />
     <!-- every colorway route is the same page in another coat -->
     <link rel="canonical" href={Astro.site?.href} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- transparent pixel mark: black on a light browser theme, white on a dark one -->
+    <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />

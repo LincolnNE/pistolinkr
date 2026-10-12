@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <style>
+      .c {
+        fill: #0a0a0a;
+      }
+    </style>
+  </defs>
+  <path class="c" d="M45.25,86.61h13.22v13.22h-13.22v-13.22Z"/>
+  <g>
+    <path class="c" d="M98.12,60.18h13.22v13.22h-13.22v-13.22Z"/>
+    <path class="c" d="M111.33,73.39l11.35-13.21h18.5l-22.79,26.43h-7.05"/>
+  </g>
+  <path class="c" d="M18.82,86.61h13.22v13.22h-13.22v-13.22Z"/>
+  <path class="c" d="M18.82,60.18h13.22v13.22h-13.22v-13.22Z"/>
+  <path class="c" d="M45.25,60.18h13.22v13.22h-13.22v-13.22Z"/>
+  <path class="c" d="M71.68,60.18h13.22v39.65h-13.22v-39.65Z"/>
+  <path class="c" d="M98.12,86.61h13.22v13.22h-13.22v-13.22Z"/>
+</svg>

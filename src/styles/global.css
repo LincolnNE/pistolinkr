@@ -108,7 +108,7 @@ p, h1, h2, ul { margin: 0; }
 @media (pointer: coarse) and (display-mode: browser) { .blur { display: none; } }
 .site-header nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
 .home { display: flex; align-items: center; min-height: 44px; }
-.home svg { width: 40px; height: 21px; display: block; }
+.home svg { height: 16px; width: auto; display: block; }
 .nav-right { display: flex; align-items: center; gap: 24px; font-size: 14px; }
 .nav-links { display: flex; gap: 24px; }
 

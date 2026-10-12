@@ -1,5 +1,5 @@
 ---
-import Short from './Short.astro';
+import { PIXEL, PIXEL_VIEWBOX } from '../data/marks';
 import { nav } from '../data/content';
 ---
 <div class="blur top" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -8,7 +8,7 @@ import { nav } from '../data/content';
 <div class="blur side rgt" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
 <header class="site-header">
   <nav class="in">
-    <a class="home" href="#top" aria-label="pistolinkr home"><Short /></a>
+    <a class="home" href="#top" aria-label="pistolinkr home"><svg viewBox={PIXEL_VIEWBOX} fill="currentColor" aria-hidden="true">{PIXEL.map((d) => <path d={d} />)}</svg></a>
     <div class="nav-right">
       <div class="nav-links">
         {nav.map((n) => <a class="ul" href={n.href}>{n.label}</a>)}
