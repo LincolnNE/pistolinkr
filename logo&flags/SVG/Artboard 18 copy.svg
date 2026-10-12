@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .c {
+        fill: #e1f451;
+      }
+
+      .d {
+        fill: #0a0a0a;
+      }
+    </style>
+  </defs>
+  <g>
+    <rect class="c" x="-.02" width="100" height="100"/>
+    <g>
+      <path class="d" d="M28.27,54.13h8.26v8.26h-8.26v-8.26Z"/>
+      <g>
+        <path class="d" d="M61.31,37.61h8.26v8.26h-8.26v-8.26Z"/>
+        <path class="d" d="M69.57,45.87l7.09-8.26h11.56l-14.25,16.52h-4.41"/>
+      </g>
+      <path class="d" d="M11.75,54.13h8.26v8.26h-8.26v-8.26Z"/>
+      <path class="d" d="M11.75,37.61h8.26v8.26h-8.26v-8.26Z"/>
+      <path class="d" d="M28.27,37.61h8.26v8.26h-8.26v-8.26Z"/>
+      <path class="d" d="M44.79,37.61h8.26v24.78h-8.26v-24.78Z"/>
+      <path class="d" d="M61.31,54.13h8.26v8.26h-8.26v-8.26Z"/>
+    </g>
+  </g>
+  <rect class="c" y="100" width="100" height="100"/>
+  <rect class="d" x="-99.98" y="-.01" width="100" height="100"/>
+</svg>
