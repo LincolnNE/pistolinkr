@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pistolinkr",
+  "compatibility_date": "2026-10-12",
+  "assets": { "directory": "./dist" },
+  "routes": [
+    { "pattern": "pistolinkr.com", "custom_domain": true },
+    { "pattern": "www.pistolinkr.com", "custom_domain": true }
+  ]
+}

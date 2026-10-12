@@ -13,6 +13,15 @@ npm run build    # static output in dist/
 npm run preview  # serve the build
 ```
 
+## Deploy (Cloudflare Workers)
+
+The site is a static-assets Worker named `pistolinkr` (see `wrangler.jsonc`), served on the custom domains `pistolinkr.com` and `www.pistolinkr.com`.
+
+- **Automatic:** in Cloudflare, Workers & Pages → Create → Import a repository → `pistolinkr/pistolinkr`, branch `main`. Worker name `pistolinkr`, build command `npm run build`, deploy command `npx wrangler deploy`. Every push to `main` then deploys.
+- **By hand:** `npx wrangler login` once, then `npm run deploy`.
+
+`pistolinkr.com` must be a zone in the same Cloudflare account; the custom domains and their DNS records are created on first deploy.
+
 ## Colorways
 
 Each colorway is its own route, like the team site:
