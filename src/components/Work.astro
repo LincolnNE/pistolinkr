@@ -1,0 +1,24 @@
+---
+import { work } from '../data/content';
+---
+<section id="work" class="band">
+  <div class="in">
+    <p class="eb">{work.eyebrow}</p>
+    <h2 class="h2 h2--gap">{work.title}</h2>
+    <div class="wk-list">
+      {work.items.map((w) => (
+        <div class="wk">
+          <a class="wk-name" href={w.href} target="_blank" rel="noopener">{w.name} ↗</a>
+          <div class="col col--tight">
+            <p class="wk-desc">{w.desc}</p>
+            <div class="pills">
+              {w.pills.map((p) => (
+                <span class:list={['pill', `pill--${p.kind}`]}>{p.kind === 'live' && <span class="pill-dot" />}{p.label}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

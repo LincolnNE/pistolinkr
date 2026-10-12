@@ -1,0 +1,15 @@
+---
+import Short from './Short.astro';
+import { nav } from '../data/content';
+---
+<header class="site-header">
+  <nav class="in">
+    <a class="home" href="#top" aria-label="pistolinkr home"><Short /></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        {nav.map((n) => <a class="ul" href={n.href}>{n.label}</a>)}
+      </div>
+      <a class="cta cta--sm" href="#contact">contact</a>
+    </div>
+  </nav>
+</header>

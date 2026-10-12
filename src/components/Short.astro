@@ -1,0 +1,9 @@
+---
+// P:kr — the short form of the wordmark.
+import { SHORT, SHORT_VIEWBOX } from '../data/marks';
+interface Props { class?: string; label?: string }
+const { class: cls, label } = Astro.props;
+---
+<svg class={cls} viewBox={SHORT_VIEWBOX} fill="currentColor" {...(label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': 'true' })}>
+  {SHORT.map((d) => <path d={d} />)}
+</svg>

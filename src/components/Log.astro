@@ -1,0 +1,26 @@
+---
+import Colon from './Colon.astro';
+import { log } from '../data/content';
+---
+<section id="log" class="band">
+  <div class="in lg">
+    <div class="col">
+      <p class="eb">{log.eyebrow}</p>
+      <h2 class="h2">{log.title}</h2>
+      <p class="note">{log.body}</p>
+    </div>
+    <div class="lr-list">
+      {log.entries.map((e) => (
+        <div class="lr">
+          <span class="lr-date">{e.date}</span>
+          <Colon hollow={!e.done} class="lr-glyph" />
+          <span class:list={['lr-title', { 'is-next': !e.done }]}>{e.title}</span>
+          <span class="lr-team">{e.repo}</span>
+          {e.done
+            ? <span class="status"><span class="status-dot" />done</span>
+            : <span class="pill pill--outline">planned</span>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
