@@ -6,19 +6,35 @@ import { work } from '../data/content';
     <p class="eb">{work.eyebrow}</p>
     <h2 class="h2 h2--gap">{work.title}</h2>
     <div class="wk-list">
-      {work.items.map((w) => (
+      {work.items.map((w, i) => (
         <div class="wk">
           <a class="wk-name" href={w.href} target="_blank" rel="noopener">{w.name} ↗</a>
           <div class="col col--tight">
             <p class="wk-desc">{w.desc}</p>
             <div class="pills">
-              {w.pills.map((p) => (
-                <span class:list={['pill', `pill--${p.kind}`]}>{p.kind === 'live' && <span class="pill-dot" />}{p.label}</span>
-              ))}
+              {w.pills.map((p) => p.kind === 'live'
+                ? <button type="button" class="pill pill--live" aria-expanded="false" aria-controls={`wk-embed-${i}`}><span class="pill-dot" />{p.label}</button>
+                : <span class:list={['pill', `pill--${p.kind}`]}>{p.label}</span>)}
             </div>
+          </div>
+          <div class="wk-embed" id={`wk-embed-${i}`} hidden>
+            <iframe title={`${w.name}, live`} data-src={w.href} loading="lazy"></iframe>
           </div>
         </div>
       ))}
     </div>
   </div>
 </section>
+<script>
+  // "live" opens the site right in the row; the iframe only loads on first open.
+  document.querySelectorAll<HTMLButtonElement>('.wk .pill--live').forEach((b) => {
+    b.addEventListener('click', () => {
+      const panel = document.getElementById(b.getAttribute('aria-controls')!)!;
+      const open = b.getAttribute('aria-expanded') !== 'true';
+      const frame = panel.querySelector('iframe')!;
+      if (open && !frame.src) frame.src = frame.dataset.src!;
+      panel.hidden = !open;
+      b.setAttribute('aria-expanded', String(open));
+    });
+  });
+</script>

@@ -52,14 +52,14 @@ export const work = {
   title: 'things i make.',
   items: [
     {
-      name: 'biolabs.world',
-      href: 'https://www.biolabs.world',
+      name: 'biolabs',
+      href: 'https://biolabs.work',
       desc: 'A research platform combining protein simulation, AI diagnosis, drug screening and epidemiological modeling.',
       pills: [{ kind: 'live', label: 'live' }],
     },
     {
       name: 'g.gearservice',
-      href: 'https://github.com/g-gearservice',
+      href: 'https://gdotgear.services',
       desc: 'The team I lead — two arcs and one lens, one flow from planning to operations.',
       pills: [{ kind: 'live', label: 'live' }, { kind: 'outline', label: 'lead' }],
     },

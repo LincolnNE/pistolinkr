@@ -161,6 +161,11 @@ p, h1, h2, ul { margin: 0; }
 .pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border-radius: 6px; font-size: 11px; font-weight: 600; }
 .pill--live { background: var(--accent); color: var(--on-accent); }
 .pill--outline { padding: 2px 8px; border: 1px solid var(--fg); justify-self: start; }
+button.pill { border: 0; font: inherit; font-size: 11px; font-weight: 600; cursor: pointer; }
+@media (hover: hover) and (pointer: fine) { button.pill:hover { opacity: .85; } }
+.pill--live[aria-expanded=true] .pill-dot { background: transparent; box-shadow: inset 0 0 0 1px var(--on-accent); } /* hollow dot while open */
+.wk-embed { grid-column: 1 / -1; }
+.wk-embed iframe { display: block; width: 100%; height: min(72vh, 760px); border: 1px solid var(--line); border-radius: 12px; background: #fff; }
 .pill-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--on-accent); }
 
 /* log */
