@@ -1,4 +1,4 @@
-/* pistolinkr — flat. Colour tokens (--bg --fg --soft --line --dim --mark --accent --on-accent)
+/* pistolinkr — flat. Colour tokens (--bg --fg --soft --line --dim --mark --accent --on-accent --title)
    are set on <html> per colorway from src/data/colorways.ts. */
 
 :root {
@@ -6,12 +6,14 @@
   --gutter: clamp(16px, 3.4vw, 48px);
   --max: 1440px;
   --ease-out: cubic-bezier(.23, 1, .32, 1);
+  --ease-in-out: cubic-bezier(.77, 0, .175, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 /* no rubber-band: the foot mark is cropped at the page end, and bouncing past it shows the cut edge */
 html { scroll-padding-top: 72px; -webkit-text-size-adjust: 100%; overscroll-behavior-y: none; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+html.lenis { scroll-behavior: auto; } /* Lenis animates scrollTop itself; native smooth would fight it */
 body { margin: 0; background: var(--bg); color: var(--fg); }
 a { color: inherit; text-decoration: none; }
 p, h1, h2, ul { margin: 0; }
@@ -32,7 +34,7 @@ p, h1, h2, ul { margin: 0; }
 .band { border-top: 1px solid var(--line); padding: 140px 0; }
 
 /* type */
-.h2 { font-size: clamp(48px, 7.4vw, 112px); font-weight: 500; letter-spacing: -0.045em; line-height: 1; }
+.h2 { color: var(--title); font-size: clamp(48px, 7.4vw, 112px); font-weight: 500; letter-spacing: -0.045em; line-height: 1; }
 .h2--gap { margin: 20px 0 64px; }
 .eb { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--soft); }
 .eb::before { content: ''; width: 22px; height: 1px; background: currentColor; }
@@ -112,11 +114,12 @@ p, h1, h2, ul { margin: 0; }
 
 /* hero */
 .hero { padding-top: 24px; }
-.hero-mark { height: clamp(220px, 45vw, 650px); overflow: hidden; margin-top: clamp(16px, 2vw, 32px); }
+.hero-mark { overflow: hidden; margin-top: clamp(16px, 2vw, 32px); }
 .hero-mark svg { width: 100%; display: block; }
+.hero-mark .g-ar { opacity: 0; }
 
 /* statement */
-.statement { padding: 160px 0; }
+.statement { padding: 160px 0; border-top: 0; } /* no rule under the hero mark */
 .statement .in, .center { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 40px; }
 .center { gap: 22px; }
 
@@ -198,11 +201,32 @@ p, h1, h2, ul { margin: 0; }
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @keyframes rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 /* intro: the big mark drops down from behind the top-edge blur (.blur sits above it), then the bar drops in from above */
+/* hero colon: the dot starts sitting on the square (20.45 = gap in the mark's own units), then lifts to its place */
+@keyframes dot-lift { from { transform: translateY(20.45px); } to { transform: none; } }
+/* hero compress loop, 8s: four 2s readings, each change a 6% (~0.5s) ease-in-out move. Glyphs slide left over the
+   ones fading out (transform + opacity only). px = the mark's own units: s at 40.17, l 97.87, i 106.71, k 139.27. */
+@keyframes c-sto { 0%, 47% { opacity: 1; } 53%, 94% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes c-l   { 0%, 47% { opacity: 1; transform: none; } 53%, 72% { opacity: 1; transform: translateX(-57.7px); } 78%, 94% { opacity: 0; transform: translateX(-57.7px); } 100% { opacity: 1; transform: none; } }
+@keyframes c-in  { 0%, 22% { opacity: 1; transform: none; } 28%, 47% { opacity: 0; transform: none; } 53%, 72% { opacity: 1; transform: translateX(-57.7px); } 78%, 94% { opacity: 0; transform: translateX(-57.7px); } 100% { opacity: 1; transform: none; } }
+@keyframes c-ar  { 0%, 22% { opacity: 0; } 28%, 47% { opacity: 1; } 53%, 100% { opacity: 0; } }
+@keyframes c-kr  { 0%, 22% { transform: none; } 28%, 47% { transform: translateX(-10.16px); } 53%, 72% { transform: translateX(-57.7px); } 78%, 94% { transform: translateX(-99.1px); } 100% { transform: none; } }
+/* the word re-centres as it shrinks (half of what it lost on the right: 10.16, 57.7, 99.1), and blurs through each change */
+@keyframes c-center { 0%, 22% { transform: none; } 28%, 47% { transform: translateX(5.08px); } 53%, 72% { transform: translateX(28.85px); } 78%, 94% { transform: translateX(49.55px); } 100% { transform: none; } }
+@keyframes c-blur { 0%, 22%, 28%, 47%, 53%, 72%, 78%, 94%, 100% { filter: blur(0); } 25%, 50%, 75%, 97% { filter: blur(8px); } }
 @keyframes drop-in { from { transform: translateY(-100%); } to { transform: none; } }
 @keyframes clip-up { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0); } }
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-mark { animation: drop-in 1.1s var(--ease-out) .1s both; }
+  .hero-mark :is(.g-sto, .g-l, .g-in, .g-ar, .g-kr) { animation: 8s var(--ease-in-out) 1.8s infinite both; }
+  .hero-mark .wm { animation: c-center 8s var(--ease-in-out) 1.8s infinite both; }
+  .hero-mark svg { animation: c-blur 8s var(--ease-in-out) 1.8s infinite both; }
+  .hero-mark .g-sto { animation-name: c-sto; }
+  .hero-mark .g-l { animation-name: c-l; }
+  .hero-mark .g-in { animation-name: c-in; }
+  .hero-mark .g-ar { animation-name: c-ar; }
+  .hero-mark .g-kr { animation-name: c-kr; }
+  .hero-mark path:nth-child(2) { animation: dot-lift 1.1s var(--ease-out) .1s both; } /* same timing as the drop: they part on the way down */
   .site-header { animation: drop-in .6s var(--ease-out) .9s both; }
 
   @supports (animation-timeline: view()) {

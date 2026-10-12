@@ -20,7 +20,8 @@ Each colorway is its own route, like the team site:
 | route       | colorway |
 |-------------|----------|
 | `/`, `/paper` | paper (default) |
-| `/ink`      | ink-lime (`/ink-lime` redirects here) |
+| `/ink/lime` | ink-lime (`/ink`, `/ink-lime` redirect here) |
+| `/ink/lilac` | ink-lilac |
 | `/lilac`    | lilac |
 | `/lime`     | lime |
 

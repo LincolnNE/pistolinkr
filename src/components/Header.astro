@@ -18,6 +18,13 @@ import { nav } from '../data/content';
   </nav>
 </header>
 <script>
+  import Lenis from 'lenis';
+  import 'lenis/dist/lenis.css';
+  // Slower, eased wheel scroll, same knobs as g.gearservice (Lenis defaults: lerp 0.1 / wheelMultiplier 1).
+  // Touch stays native; anchor offset = sticky header height.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !matchMedia('(pointer: coarse)').matches)
+    new Lenis({ autoRaf: true, lerp: 0.07, wheelMultiplier: 0.7, anchors: { offset: -72 } });
+
   // Header hides (html.nav-up) while the big hero mark scrolls by, and below it while scrolling down; any scroll up
   // brings it back. Shown at the very top. The blur stays.
   // Slide time follows scroll speed (lifted from g.gearservice): a flick snaps it (150ms), a slow drag eases it (600ms).

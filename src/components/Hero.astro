@@ -1,7 +1,19 @@
 ---
-import Short from './Short.astro';
+// The full wordmark, P:stolinkr, compressing through its readings (design "B · Lens — Phone hero"):
+// P:stolinkr → P:stol→kr → P:linkr → P:kr. Path order keeps the colon's dot second (global.css lifts it off the square).
+import { FULL_VIEWBOX, PISTOL, INKR } from '../data/marks';
+// which glyphs move together; index = path order (P, dot, square, s, t, o, l, i, n, k, r)
+const groups: Record<number, string> = { 3: 'g-sto', 4: 'g-sto', 5: 'g-sto', 6: 'g-l', 7: 'g-in', 8: 'g-in', 9: 'g-kr', 10: 'g-kr' };
 ---
 <section class="in hero" data-section="hero">
   <h1 class="sr-only">pistolinkr</h1>
-  <div class="hero-mark" aria-hidden="true"><Short /></div>
+  <div class="hero-mark" aria-hidden="true">
+    <svg viewBox={FULL_VIEWBOX} fill="currentColor">
+      <g class="wm">
+        {[...PISTOL, ...INKR].map((d, i) => <path class={groups[i]} d={d} />)}
+        <!-- the → of P:stol→kr, drawn into the gap the i and n leave -->
+        <path class="g-ar" d="M106.71,27.6H123.5M115.5,19.6L123.5,27.6L115.5,35.6" fill="none" stroke="currentColor" stroke-width="3.4" />
+      </g>
+    </svg>
+  </div>
 </section>
